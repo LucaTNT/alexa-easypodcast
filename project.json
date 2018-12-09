@@ -1,0 +1,7 @@
+{
+  "name": "alexa",
+  "description": "Skill EasyPodcast",
+  "memory": 128,
+  "timeout": 5,
+  "role": ""
+}

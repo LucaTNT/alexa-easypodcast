@@ -1,0 +1,14 @@
+{
+  "name": "EasyPodcast",
+  "version": "1.0.0",
+  "description": "Skill alexa per la riproduzione dei podcast di EasyPodcast.",
+  "main": "easypodcast.js",
+  "dependencies": {
+    "alexa-app": "^4.2.2"
+  },
+  "author": "Luca Zorzi",
+  "license": "MIT",
+  "engines": {
+    "node": ">=8.0.0"
+  }
+}
