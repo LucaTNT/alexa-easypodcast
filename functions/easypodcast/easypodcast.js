@@ -64,7 +64,18 @@ app.pre = function(req, res, type) {
 };
 
 app.launch((req, res) => {
-    return_response(res, "Benvenuto nella skill di isi podcast. Puoi chiedermi di riprodurre la puntata che vuoi del tuo podcast preferito. Ad esempio: Alexa, chiedi a isi podcast di riprodurre l'ultima puntata di isi apple.", "Benvenuto nella skill di EasyPodcast.\nPuoi chiedermi di riprodurre la puntata che vuoi del tuo podcast preferito. Ad esempio: Alexa, chiedi a EasyPodcast di riprodurre l'ultima puntata di EasyApple.");
+    return_response(
+                        res,
+                        "Benvenuto nella skill di isi podcast. " +
+                        "Puoi chiedermi di riprodurre la puntata che vuoi del tuo podcast preferito. " +
+                        "Ad esempio: Alexa, chiedi a isi podcast di riprodurre l'ultima puntata di isi apple.",
+                        "Benvenuto nella skill di EasyPodcast.\n" +
+                        "Puoi chiedermi di riprodurre la puntata che vuoi del tuo podcast preferito. "+
+                        "Ad esempio: Alexa, chiedi a EasyPodcast di riprodurre l'ultima puntata di EasyApple.",
+                        undefined,
+                        undefined,
+                        false
+                    );
 });
 
 app.customSlot("PodcastNameType", [
