@@ -186,27 +186,31 @@ function return_error_response(res, err, text, card_text) {
     return_response(res, text, card_text);
 }
 
-function return_response(res, text, card_text, image_small, image_large) {
+function return_response(res, text, card_text, image_small, image_large, should_end_session = true) {
     if (image_small == undefined && image_large == undefined) {
-        res.say(text);
+        res.say(text).shouldEndSession(should_end_session);
         if (card_text !== false) {
             card_text = (card_text !== undefined ? card_text : text);
             res.card({
-                type: "Simple",
+                type: "Standard",
                 title: "EasyPodcast",
-                content: card_text
+                text: card_text,
+                image: { // image is optional
+                    smallImageUrl: "https://media.easypodcast.it/img/easypodcast_white600.png",
+                    largeImageUrl: "https://media.easypodcast.it/img/easypodcast_white.png"
+                }
             });
         }
     }
     else
     {
         console.log('small: ' + image_small + ' large: ' + image_large)
-        res.say(text);
+        res.say(text).shouldEndSession(should_end_session);
         if (card_text !== false) {
             res.card({
                 type: "Standard",
                 title: "EasyPodcast",
-                text: text,
+                text: card_text,
                 image: { // image is optional
                     smallImageUrl: image_small,
                     largeImageUrl: image_large
