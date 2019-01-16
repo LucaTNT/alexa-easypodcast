@@ -60,7 +60,7 @@ const show_display_name = {
 }
 
 app.pre = function(req, res, type) {
-  console.log(req.data)
+  console.log(JSON.stringify(req.data))
 };
 
 app.launch((req, res) => {
