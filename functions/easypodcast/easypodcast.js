@@ -279,8 +279,9 @@ app.intent('PlayLastEpisodeIntent', {
         if (req.getDialog().isStarted() || req.getDialog().isInProgress()) {
             req.getDialog().handleDialogDelegation();
         } else if (req.getDialog().isCompleted()) {
-            const show_name = req.slots['PodcastName'].resolutions[0].values[0].id
-            console.log(req.slots['PodcastName'].resolutions[0])
+            const resolution = req.slots['PodcastName'].resolutions.filter(function (element) {return (element.status == "ER_SUCCESS_MATCH");})[0]
+
+            const show_name = resolution.values[0].id
             console.log("show: " + show_name + " id: " + show_id[show_name] + " slug: " + slug[show_name])
 
             const episode_data = get_latest_episode(show_name)
@@ -314,10 +315,9 @@ app.intent('PlayEpisodeIntent', {
         if (req.getDialog().isStarted() || req.getDialog().isInProgress()) {
             req.getDialog().handleDialogDelegation();
         } else if (req.getDialog().isCompleted()) {
-            const show_name = req.slots['PodcastName'].resolutions[0].values[0].id
-            console.log(req.slots['PodcastName'].resolutions[0])
-            console.log(req.slots)
-            console.log(req.slots['EpisodeNumber'])
+            const resolution = req.slots['PodcastName'].resolutions.filter(function (element) {return (element.status == "ER_SUCCESS_MATCH");})[0]
+            const show_name = resolution.values[0].id
+
             const episode_number = req.slot("EpisodeNumber");
 
             if (episode_number !== undefined)
