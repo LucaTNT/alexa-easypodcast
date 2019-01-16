@@ -335,7 +335,9 @@ app.intent('PlayEpisodeIntent', {
                     play_episode(res, result)
                 }, function(err) {
                     const text = `C'è stato un errore cercando di riprodurre la puntata ${episode_number} di ${pronunciation[show_name]}, sei sicuro che esista?`;
-                    return_error_response(res, err, text);
+                    const card_text = `C'è stato un errore cercando di riprodurre la puntata ${episode_number} di ${show_display_name[show_name]}, sei sicuro che esista?`;
+
+                    return_error_response(res, err, text, card_text);
                 })
             }
             else
