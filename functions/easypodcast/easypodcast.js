@@ -358,6 +358,20 @@ app.intent('AMAZON.PauseIntent', {},
         res.send();
     }
 );
+app.intent('AMAZON.HelpIntent', {},
+    function(req, res) {
+        return_response(
+            res,
+            "Puoi chiedermi di riprodurre la puntata che vuoi del tuo podcast preferito. " +
+            "Ad esempio: Alexa, chiedi a isi podcast di riprodurre l'ultima puntata di isi apple.",
+            "Puoi chiedermi di riprodurre la puntata che vuoi del tuo podcast preferito. "+
+            "Ad esempio: Alexa, chiedi a EasyPodcast di riprodurre l'ultima puntata di EasyApple.",
+            undefined,
+            undefined,
+            false
+        );
+    }
+);
 
 app.intent('AMAZON.ResumeIntent', {},
   function(req, res) {
@@ -375,6 +389,13 @@ app.intent('AMAZON.ResumeIntent', {},
 );
 
 app.intent('AMAZON.CancelIntent', {},
+    function(req, res) {
+        res.audioPlayerStop();
+        res.send();
+    }
+);
+
+app.intent('AMAZON.StopIntent', {},
     function(req, res) {
         res.audioPlayerStop();
         res.send();
